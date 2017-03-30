@@ -1,0 +1,27 @@
+<table>
+  <tbody>
+    <tr>
+      <td><%=current_user.full_name%></td>
+    </tr>
+    <% if !@requests.blank? %>
+    <% @requests.each do |request| %>
+      <tr>
+        <td>
+	        <% @r=User.where(id: request.sender_id)%>
+	        <%= @r.first.first_name + ' ' + @r.first.last_name %>
+        </td>
+        
+        <td>
+          <%= button_to "Confirm", confirm_friend_friend_request_path(request) , :method => "patch" %>
+        </td>
+
+        <td>
+          <%= button_to "Delete", delete_friend_friend_request_path(request) , :method => "delete" %>
+        </td>
+       <% end %>
+    <% else %>
+      No Friend Request...............
+    <% end %>
+    </tr>
+  </tbody>
+</table>

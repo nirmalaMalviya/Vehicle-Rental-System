@@ -1,0 +1,26 @@
+Hello
+<% byebug %>
+<%# @v = Vehicle.new %>
+<% @vehicle = Vehicle.all %>
+<%# @vehicle.images.where(user_id: 17) %>
+<% @post_vehicle=@vehicle.where(user_id: 17) %>
+<% @%>
+<%# @post_vehicle.%>
+<div>
+<div>
+</div>
+<div>
+	<table>
+	  <tbody>
+	    <%= @post_vehicle.each do |vehicle| %>
+	      <tr>
+	        <td>
+	        <% byebug %>
+	          <%= image_tag "vehicle.images.name" %>
+	        </td>
+	      </tr>
+	    <% end %>
+	</tbody>
+	</table>
+</div>
+</div>

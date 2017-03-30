@@ -1,0 +1,43 @@
+<p>
+  <strong>Name:</strong>
+  <%= @vehicle.name %>
+</p>
+
+<p>
+  <strong>Vehicle No.:</strong>
+  <%= @vehicle.vno %>
+</p>
+
+
+<p>
+  <strong>Vehicle Cost</strong>
+  <%= @vehicle.cost %>	
+</p>
+
+<p>
+  <strong>Vehicle Seater</strong>
+  <%= @vehicle.seater %>	
+</p>
+
+<p>
+  <strong>Vehicle Fuel Type</strong>
+  <%= @vehicle.fueltype %>	
+</p>
+
+<p>
+  <strong>Vehicle Image</strong>
+
+  <% @images_urls.each do |g| %>
+    <%= image_tag(g, size: "16x10")  %> 
+  <% end %>
+  <%#= @my_images.name %> 
+</p>
+
+
+<p>
+  <strong>Vehicle Image</strong>
+  <%= @vehicle.pictures %> 
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>

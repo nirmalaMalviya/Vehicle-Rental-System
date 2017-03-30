@@ -1,0 +1,5 @@
+<% if @book_vehicle.errors.any? %> 
+  $('#adfhsdgfh .modal-body').html("<%= j (render :partial => 'form') %>");
+<% else %>
+  $('#adfhsdgfh').modal('hide');
+<% end %>

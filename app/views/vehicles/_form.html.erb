@@ -1,0 +1,68 @@
+<%= nested_form_for(@vehicle, html: { class: "form-horizontal" }) do |f| %>
+
+  <div class="form-group">
+	  <%= label_tag :name, "Vehicle Name", class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :name  , class: "form-control"%>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag :vtype, "Vehicle Type", class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :vtype , class: "form-control"%>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag :vno, "Vehicle No.",class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :vno , class: "form-control"%>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag :cost, "Vehicle Cost",class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :cost, class: "form-control" %>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag :seater, "Seater", class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :seater, class: "form-control" %>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag :fueltype, "Fuel Type",class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :fueltype, class: "form-control" %>
+	  </div>
+	</div>
+
+  <div class="form-group">
+	  <%= label_tag :user_id, "User Id", class: "control-label col-sm-2" %>
+	  <div class="col-sm-10">
+	    <%= f.text_field :user_id  , :value=>current_user[:id] ,class: "form-control"%>
+	  </div>
+	</div>
+
+  <div id="tasks" class="form-group">
+    <%= f.fields_for :images do |image_form| %>
+	    <%= label_tag :name, "Vehicle Image",class: "control-label col-sm-2" %>
+	    <div class="col-sm-10">
+	      <%= image_form.file_field :name, class: "form-control" %>
+	    </div>
+	     <%= image_form.link_to_remove "Remove this Image" %>
+	  <% end %> 
+	</div>
+  <p><%= f.link_to_add "Add a Image", :images, :data => { :target => "#tasks" } %></p>
+	  
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

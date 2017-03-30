@@ -1,0 +1,2 @@
+class MyAdmin < ApplicationRecord
+end

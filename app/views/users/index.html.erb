@@ -1,0 +1,35 @@
+<h1>Users <%= params[:type].titleize %></h1>
+<div>
+<table class="table table-hover">
+	<thead>
+		<tr>
+		<th>User Id</th>
+	    <th>First Name</th>
+      <th>Last Name</th>
+      <th>Images</th>
+      <th></th>
+    </tr>
+	</thead>
+	<tbody>
+  <% @users.each do |user| %>
+	  <tr>
+      <td><%= user.id %></td>
+	    <td><%= user.first_name %></td>
+	    <td><%= user.last_name %></td>
+	    <% if user.showing_image %>
+        <td><%=image_tag(user.showing_image.name.url, size: "80x80" )%></td>
+      <% end %>
+      <td>
+      <% if params[:type] == "friends" %>
+        <%= button_to "Show Friend", user, :method => "get" %>
+      <% elsif params[:type] == "non_friends" %>
+        <%= button_to "Add Friend", show_friend_request_user_path(user.id) , :method => "get" %>
+      <%else%>
+      <% end %>
+      </td>
+    </tr>    
+  <% end %>  
+	</tbody>
+</table>
+</div>
+

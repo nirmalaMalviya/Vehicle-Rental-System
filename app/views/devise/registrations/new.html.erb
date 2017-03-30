@@ -1,0 +1,79 @@
+<h2>Sign up</h2>
+
+<%= nested_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { class: "form-horizontal" }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :first_name, "First Name" %><br />
+   
+    <%= f.text_field :first_name, autocomplete: "off",  class: "form-control"%>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, "Last Name" %><br />
+
+    <%= f.text_field :last_name, autocomplete: "off" , class: "form-control"%>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dob, "Date of Birth" %><br />
+
+    <%= f.text_field :dob, 'data-provide': "datepicker" , class: "form-control"%>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, "Address" %><br />
+ 
+    <%= f.text_field :address , class: "form-control"%>
+
+  </div>
+
+  <div class="form-group" id="tasks">
+    <%= f.fields_for :images do |image_form| %>
+      <%= label_tag :name, "Vehicle Image",class: "control-label col-sm-2" %>
+   
+        <%= image_form.file_field :name, class: "form-control" %>
+   
+       <%= image_form.link_to_remove "Remove this Image" %>
+    <% end %> 
+  </div>
+  <p><%= f.link_to_add "Add a Image", :images, :data => { :target => "#tasks" } %></p>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+  
+    <%= f.email_field :email, class: "form-control" %>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+ 
+    <%= f.password_field :password, autocomplete: "off" , class: "form-control"%>
+ 
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :roll_type %><br />
+    <%= f.select(:roll_type, options_for_select([["Admin", "admin"],["User", "user"]]), class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+

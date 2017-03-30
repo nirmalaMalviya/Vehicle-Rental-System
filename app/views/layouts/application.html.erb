@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vehicledemo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 70%;
+        margin: auto;
+    }
+    </style>
+  
+  
+  </head>
+
+  <body>
+  <nav class="navbar navbar-inverse">
+  <div class="nav navbar-nav">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+      </li>
+
+      <li>
+        <%= link_to 'Vehicles', vehicles_path %>
+      </li>
+
+      <li>   
+      <%= link_to 'Insert MyAdmin', new_my_admin_path %>
+      </li>
+ 
+      <li>   
+        <%= link_to "#{current_user.full_name}", user_path(current_user) %>
+      </li>
+
+      <li>   
+        <%= link_to 'Friends', users_path(type: "friends") %>
+      </li>
+      
+      <li>
+        <%= link_to 'Non Friends', users_path(type: "non_friends") %>
+      </li>
+       
+      <li>
+        <%= link_to 'Friend Request', friend_requests_path %>
+      </li>
+
+      <li>
+        <%= link_to 'Posts', userposts_users_path, method: "get" %>
+      </li>
+    <% else %>
+      
+      <li>
+        <%= link_to('Login', new_user_session_path)  %>  
+      </li> 
+
+    <% end %>
+  </div>
+ </nav>
+<%= flash[:alert] %>
+  <div class="container">
+    <%= yield %>
+  </div>
+
+
+
+
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<!--<div class="row">
+ <div class="col-xs-6">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6">.col-xs-6 .col-md-4</div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+  </body>-->
+</html>

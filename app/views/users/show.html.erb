@@ -1,0 +1,42 @@
+<p>
+  <strong>First Name</strong>
+  <%= current_user[:first_name]%>
+</p>
+
+<p>
+  <strong>Last Name</strong>
+  <%= current_user[:last_name]%>
+</p>
+
+<p>
+  <strong>Date of Birth</strong>
+  <%= current_user[:dob]%>
+</p>
+
+<p>
+  <strong>Address</strong>
+  <%= current_user[:address]%>
+</p>
+
+<p>
+  <strong>Email ID</strong>
+  <%= current_user[:email]%>
+</p>
+
+<p>
+  <strong>Image</strong>
+  <%= form_for(current_user, url: add_showing_image_user_path(current_user)) do |f| %>
+  <li>
+		<% current_user.images.each do |image| %>
+			<div>
+				<%= f.radio_button :show_image, image.id %>
+				<%= image_tag(image.name, size: "16x10")%>
+			</div>
+		<% end %>
+  </li>
+  <%= f.submit %>
+<% end %>
+
+<%#@images=Image.all.where(id: current_user[:id])%>
+
+</p>

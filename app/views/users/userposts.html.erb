@@ -1,0 +1,100 @@
+
+<% @vehicles.each do |vehicle| %>
+  <table border="2" cellspacing="500px">
+    <tbody>   
+      <tr>
+        <td rowspan="3">
+          <div id="myCarousel-<%= vehicle.id %>" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              <%vehicle.images.each_with_index do |image,i| %>
+                <div class="item <%= i == 0 ? 'active' : ''%>">
+                  <%= image_tag image.name ,  height: '32', width: '32'%>
+                </div>
+              <%end%>
+            </div>
+            <a class="left carousel-control" href="#myCarousel-<%= vehicle.id %>" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel-<%= vehicle.id %>" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </td>
+        <td width="20%">
+          <center>
+            <%= vehicle.id %>
+          </center>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <center>
+            <%= vehicle.name %>
+          </center>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <center>
+            <%= vehicle.vno%>
+          </center>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+
+    <% @check_vehicle = BookVehicle.where(vehicle_id: vehicle.id) %>
+    <%# if @check_vehicle.blank? %>
+      <%= link_to "Booking", new_book_vehicle_path(vehicle_id: vehicle.id), remote: true %>
+    <%# else %>
+      <%#= button_to "Booked" %>
+    <%# end %>
+  </div>
+  <% @uncheck_vehicle = BookVehicle.where(vehicle_id: vehicle.id , user_id: current_user[:id]) %>
+  <% if !@uncheck_vehicle.blank? %>
+    <div class="container">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delete_popup"> 
+        Unbook
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="delete_popup" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= current_user.full_name %></h4>
+            </div>
+            <div class="modal-body">
+              <% @unbook_vehicle = BookVehicle.where(user_id: current_user[:id]) %>
+              <% @unbook_vehicle.each do |s| %>
+                <div id="delete_popup">
+                  Vehicle ID: <%= s.vehicle_id %>
+                  Vehicle Cost:<%= s.v_cost %> 
+                  <%= button_to "Unbook", book_vehicle_path(s.id), :method=> "delete", remote: true %>
+                  <br/>
+                </div>
+              <%end%>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<div id="pop-book">  
+</div>
+
+
+
+
+
+
