@@ -31,7 +31,7 @@
 
       <li>
         <%= link_to 'Vehicles', vehicles_path %>
-      </li>
+      </li >
 
       <li>   
       <%= link_to 'Insert MyAdmin', new_my_admin_path %>
@@ -55,6 +55,10 @@
 
       <li>
         <%= link_to 'Posts', userposts_users_path, method: "get" %>
+      </li>
+
+      <li>
+        <%= link_to 'Unbook Vehicle', BookVehicle.last  %>
       </li>
 
 

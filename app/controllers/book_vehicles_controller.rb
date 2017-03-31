@@ -20,6 +20,10 @@ class BookVehiclesController < ApplicationController
     end
 	end
 
+	def show
+		@book_vehicle = BookVehicle.where(user_id: current_user[:id])
+	end
+
 	def destroy
 		@book_vehicle.destroy
     respond_to do |format|
