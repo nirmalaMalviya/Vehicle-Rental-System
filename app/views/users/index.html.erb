@@ -23,6 +23,7 @@
       <% if params[:type] == "friends" %>
         <%= button_to "Show Friend", user, :method => "get" %>
       <% elsif params[:type] == "non_friends" %>
+      
         <%= button_to "Add Friend", show_friend_request_user_path(user.id) , :method => "get" %>
       <%else%>
       <% end %>

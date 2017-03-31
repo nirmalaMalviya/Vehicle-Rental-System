@@ -27,9 +27,9 @@ class UsersController < ApplicationController
 	end
 
 	def show_friend_request
-		@n = FriendRequest.new(friend_id: params[:id], sender_id: current_user[:id])
+		@friend = FriendRequest.new(friend_id: params[:id], sender_id: current_user[:id])
 		respond_to do |format|
-			if @n.save
+			if @friend.save
 			  format.html{redirect_to users_path(type: "non_friends"),notice: "sssssssssssssssss."}
 			else
 			  format.html { render :show }

@@ -12,7 +12,7 @@ class BookVehiclesController < ApplicationController
     	if @book_vehicle.save
     		format.html{redirect_to userposts_users_path, notice: 'Vehicle is booked.'}
     	  format.js
-    	  UserMailer.welcome_email(current_user).deliver_later
+    	  
     	else
     	  format.html { render :new }
     	  format.js

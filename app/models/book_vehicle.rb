@@ -1,10 +1,15 @@
 class BookVehicle < ApplicationRecord
+	after_create :send_mail
 	belongs_to :user
 	belongs_to :vehicle
 	validates :address, :date_of_booking, :date_of_release, presence: true
 	scope :overlaps, ->(date_of_booking, date_of_release) do
      where "((date_of_booking <= ?) and (date_of_release >= ?))", date_of_booking, date_of_release
   end
+
+  def send_mail
+		UserMailer.welcome_email(self.user).deliver_later
+	end
 
   def overlaps?
     overlaps.exists?
@@ -13,7 +18,6 @@ class BookVehicle < ApplicationRecord
   # Others are models to be compared with your current model
   # you can get these with a where for example
   def overlaps
-  	byebug
     siblings.overlaps date_of_booking, date_of_release
   end
 
