@@ -1,12 +1,11 @@
 <% @book_vehicle.each do |booked_vehicle| %>
-<% byebug %>
-<% if Date.today < Date.parse(booked_vehicle.date_of_release.to_formatted_s(:date)) %>
-  <div id="delete_popup">
-    Vehicle ID: <%= booked_vehicle.vehicle_id %>
-    Vehicle Cost: <%= booked_vehicle.v_cost %> 
-    <%= button_to "Unbook", book_vehicle_path(booked_vehicle.id), :method=> "delete", remote: true %>
-    <br/>
-    <hr/>
-  </div>
-  <%end%>
+  <%# if Date.today < Date.parse(booked_vehicle.date_of_release.to_formatted_s(:date)) %>
+    <div id="delete_popup">
+      Vehicle ID: <%= booked_vehicle.vehicle_id %>
+      Vehicle Cost: <%= booked_vehicle.v_cost %> 
+      <%= button_to "Unbook", book_vehicle_path(booked_vehicle.id), :method=> "delete", remote: true %>
+      <hr/>
+      <br/>
+    </div>
+  <%#end%>
 <%end%>

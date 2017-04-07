@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def non_friends
-    User.where.not(id: send_friend_request + user_friends_ids)
+    User.where.not(id: send_friend_request + user_friends_ids + [id])
   end
 
   def user_friends_ids
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def send_friend_request
-    FriendRequest.where('sender_id = ? OR friend_id = ? AND status = NULL', id, id).map {|f| [f.sender_id, f.friend_id] }.flatten - [id]
+    FriendRequest.where('sender_id = ? OR friend_id = ? AND status IS ?', id, id, nil).map {|f| [f.sender_id, f.friend_id] }.flatten - [id]
   end
 
 end

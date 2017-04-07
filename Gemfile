@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'stripe'
+gem 'mysql2'
 gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
 group :development, :test do

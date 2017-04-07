@@ -1,5 +1,4 @@
 Hello
-<% byebug %>
 <%# @v = Vehicle.new %>
 <% @vehicle = Vehicle.all %>
 <%# @vehicle.images.where(user_id: 17) %>
@@ -15,7 +14,7 @@ Hello
 	    <%= @post_vehicle.each do |vehicle| %>
 	      <tr>
 	        <td>
-	        <% byebug %>
+	 
 	          <%= image_tag "vehicle.images.name" %>
 	        </td>
 	      </tr>

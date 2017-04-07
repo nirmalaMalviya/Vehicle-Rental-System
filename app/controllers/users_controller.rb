@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	load_and_authorize_resource
 	
   def show
+  	#@user = User.find(params[:id])
   end
 
   def index
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
 	  end
   end
 
-  def userposts
+  def userposts  	
   	@users = current_user.friends
   	@vehicles = Vehicle.where(user_id: @users.map(&:id))
   end

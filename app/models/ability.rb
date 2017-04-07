@@ -6,9 +6,15 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
        if user.admin?
-         can :manage, :all
+          can :manage, :all
        else
-        can :manage, :all
+          can [:create,:show,:index], Vehicle
+          can :manage, FriendRequest
+          can :manage, BookVehicle
+          can :manage, User
+          cannot :destroy, User
+         
+          
        end
 
     #

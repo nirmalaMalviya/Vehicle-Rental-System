@@ -24,7 +24,7 @@ class BookVehicle < ApplicationRecord
   validate :not_overlap
 
   def not_overlap
-    errors.add(:key, 'message') if overlaps?
+    errors.add(:key, 'This date is not accepted.') if overlaps?
   end
 
   # -1 is when you have a nil id, so you will get all persisted user absences

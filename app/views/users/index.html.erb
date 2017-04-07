@@ -17,7 +17,7 @@
 	    <td><%= user.first_name %></td>
 	    <td><%= user.last_name %></td>
 	    <% if user.showing_image %>
-        <td><%=image_tag(user.showing_image.name.url, size: "80x80" )%></td>
+        <td><%=image_tag(user.showing_image.name, size: "80x80" )%></td>
       <% end %>
       <td>
       <% if params[:type] == "friends" %>

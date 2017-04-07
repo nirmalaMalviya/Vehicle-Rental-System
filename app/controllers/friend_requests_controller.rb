@@ -3,6 +3,8 @@ class FriendRequestsController < ApplicationController
 	before_action :set_request,  except: [:index]
 
 	def index
+		byebug
+		
 		@requests = FriendRequest.where(friend_id: current_user[:id], status: nil)
 	end
 

@@ -2,6 +2,7 @@
 <div>
   <%= link_to "Add New Vehicle", new_vehicle_path %>
 </div>
+<br/>
 <div>
 <table class="table table-hover">
 	<thead>
@@ -26,9 +27,7 @@
 		    <td><%= my_vehicle.cost %></td>
 		    <td><%= my_vehicle.seater %></td>
 		    <td><%= my_vehicle.fueltype %></td>
-		    <td><%= image_tag(my_vehicle.avatar ,size: "16x10")%></td>
-		    <td><%= my_vehicle.pictures %></td>
-		    
+		    <td><%= image_tag(my_vehicle.images.last.name ,size: "16x10")%></td>
 		    <td><%= link_to 'Show', my_vehicle %></td>
         <td><%= link_to 'Edit', edit_vehicle_path(my_vehicle) %></td>
         <td><%= link_to 'Destroy', my_vehicle, method: :DELETE, data: { confirm: 'Are you sure?' } %></td>

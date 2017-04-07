@@ -12,18 +12,18 @@
 
 ActiveRecord::Schema.define(version: 20170328101740) do
 
-  create_table "book_vehicles", force: :cascade do |t|
-    t.decimal  "v_cost"
+  create_table "book_vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.decimal  "v_cost",          precision: 10
     t.string   "address"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.integer  "vehicle_id"
     t.datetime "date_of_booking"
     t.datetime "date_of_release"
   end
 
-  create_table "friend_requests", force: :cascade do |t|
+  create_table "friend_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "friend_id"
     t.integer  "sender_id"
     t.datetime "created_at", null: false
@@ -31,24 +31,24 @@ ActiveRecord::Schema.define(version: 20170328101740) do
     t.string   "status"
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "imageable_id"
     t.string   "imageable_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["imageable_id"], name: "index_images_on_imageable_id"
-    t.index ["imageable_type"], name: "index_images_on_imageable_type"
+    t.index ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
+    t.index ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
   end
 
-  create_table "my_admins", force: :cascade do |t|
+  create_table "my_admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -69,22 +69,24 @@ ActiveRecord::Schema.define(version: 20170328101740) do
     t.integer  "show_image"
     t.string   "friend_request"
     t.integer  "roll_type"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "vehicles", force: :cascade do |t|
+  create_table "vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.integer  "type"
     t.string   "vno"
-    t.decimal  "cost"
+    t.decimal  "cost",       precision: 10
     t.integer  "seater"
     t.integer  "fueltype"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "vtype"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "avatar"
-    t.         "pictures"
+    t.string   "pictures"
     t.integer  "user_id"
+    t.index ["user_id"], name: "fk_rails_9e34682d54", using: :btree
   end
 
+  add_foreign_key "vehicles", "users"
 end

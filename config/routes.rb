@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   resources :my_admins
   devise_for :users
   resources :welcomes
-  resources :book_vehicles
+  resources :book_vehicles do
+  	collection do 
+  		get 'payment'
+  		post 'stripe_payment'
+  	end
+  end
+
   resources :vehicles do
   	collection do 
   		post 'vehicleposts'
