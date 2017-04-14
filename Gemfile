@@ -34,8 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'stripe'
+gem 'kaminari'
+gem 'html2haml'
 gem 'mysql2'
 gem 'cancancan'
+gem 'ransack'
+gem "rails_best_practices"
+gem "paranoia", "~> 2.2"
+gem "audited", "~> 4.4"
+gem 'best_in_place', '~> 3.0.1'
 gem 'bootstrap-datepicker-rails'
 group :development, :test do
   gem "rails-erd"
@@ -55,5 +62,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 gem 'carrierwave', '~> 1.0'
 gem "nested_form"

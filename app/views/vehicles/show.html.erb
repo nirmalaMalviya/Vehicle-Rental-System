@@ -1,33 +1,40 @@
 <p>
   <strong>Name:</strong>
-  <%= @vehicle.name %>
+  <%byebug%>
+  <%= best_in_place @vehicle, :name %>
+  <%#= @vehicle.name %>
 </p>
 
 <p>
   <strong>Vehicle No.:</strong>
-  <%= @vehicle.vno %>
+  <%= best_in_place @vehicle, :vno %>
+  <%#= @vehicle.vno %>
 </p>
 
 
 <p>
   <strong>Vehicle Cost</strong>
-  <%= @vehicle.cost %>	
+  <%= best_in_place @vehicle, :cost %>
+  <%#= @vehicle.cost %>	
 </p>
 
 <p>
   <strong>Vehicle Seater</strong>
-  <%= @vehicle.seater %>	
+  <%= best_in_place @vehicle, :seater %>
+  <%#= @vehicle.seater %>	
 </p>
 
 <p>
   <strong>Vehicle Fuel Type</strong>
-  <%= @vehicle.fueltype %>	
+  <%= best_in_place @vehicle, :vno %>
+  <%#= @vehicle.fueltype %>	
 </p>
 
 <p>
   <strong>Vehicle Image</strong>
 
   <% @images_urls.each do |g| %>
+
     <%= image_tag(g, size: "16x10")  %> 
   <% end %>
   <%#= @my_images.name %> 

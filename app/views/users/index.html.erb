@@ -1,4 +1,15 @@
-<h1>Users <%= params[:type].titleize %></h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label :first_name, "Search" %>
+  <%= f.search_field :first_name_or_last_name_cont %>
+  <%= hidden_field_tag 'type', params[:type] %>
+  <%= f.submit %>
+<% end %>
+
+<%= sort_link(@q, :first_name) do %>
+  <strong></strong>
+<% end %>
+
+<h1>Users <%= params[:type].try(:titleize) %></h1>
 <div>
 <table class="table table-hover">
 	<thead>
@@ -32,5 +43,8 @@
   <% end %>  
 	</tbody>
 </table>
-</div>
 
+<%= paginate @users %>
+<%= link_to_prev_page @users, 'Previous Page' %>
+<%= link_to_next_page @users, 'Next Page' %>
+</div>

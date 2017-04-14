@@ -16,6 +16,8 @@
 //= require jquery_nested_form
 //= require bootstrap-slider
 //= require bootstrap-datepicker
+//= require jquery
+//= require best_in_place
 //= require_tree .
 
  

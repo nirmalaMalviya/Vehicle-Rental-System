@@ -53,16 +53,44 @@
     <%= f.fields_for :images do |image_form| %>
 	    <%= label_tag :name, "Vehicle Image",class: "control-label col-sm-2" %>
 	    <div class="col-sm-10">
-	      <%= image_form.file_field :name, class: "form-control" %>
+	      <%= image_form.file_field :name, class: "form-control",id: "imgupload", onchange: "readURL(this)", type: "hidden" %>
+	      <%= image_tag ('n.jpg'),id: "OpenImgUpload"%>
+	      <%#= f.file_field :image, :class => 'file-input-custom', 'data-show-caption' => true, 'data-show-upload' => false, :accept => 'image/*'%>
+	      
 	    </div>
 	     <%= image_form.link_to_remove "Remove this Image" %>
 	  <% end %> 
 	</div>
-  <p><%= f.link_to_add "Add a Image", :images, :data => { :target => "#tasks" } %></p>
-	  
+  <p>
+    <%= f.link_to_add "Add a Image", :images, :data => { :target => "#tasks" } %>
+  </p>
+	 
+
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit %>
     </div>
   </div>
 <% end %>
+
+
+<script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            $('#OpenImgUpload')
+              .attr('src', e.target.result)
+              .width(150)
+              .height(200);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+</script>
+
+<script type="text/javascript">
+    $('#OpenImgUpload').click(function(){ $('#imgupload').trigger('click'); });
+</script>

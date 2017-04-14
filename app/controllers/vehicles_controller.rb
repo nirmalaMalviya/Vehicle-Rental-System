@@ -1,5 +1,6 @@
 class VehiclesController < ApplicationController
-  load_and_authorize_resource
+ load_and_authorize_resource
+  respond_to :html, :json
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
@@ -19,7 +20,6 @@ class VehiclesController < ApplicationController
 
 
   def new
-    
     @vehicle.images.new
   end
 
@@ -30,19 +30,21 @@ class VehiclesController < ApplicationController
 
 
 	def show
+   # @vehicle = Vehicle.find(5)
 		@images_urls = @vehicle.images.map(&:name_url).compact
 		#@my_image=Image.find(params[:id])
 	end
 
 
   def update
+    #@vehicle = Vehicle.find(params[:id])
     respond_to do |format|
-    	if @vehicle.update(vehicle_params)
+      if @vehicle.update_attributes(vehicle_params)
     		format.html{redirect_to @vehicle,notice: "Vehicle data successfully updated."}
-    		format.json{render:show, status: :ok, location: @vehicle }
+    		format.json{respond_with(@vehicle)}
     	else
     		format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.json {respond_with(@vehicle)}
     	end
     end
   end
@@ -56,10 +58,8 @@ class VehiclesController < ApplicationController
   end
 
   def vehicleposts
-    
     @vehicle = Vehicle.all
     @v = @vehicle.user_friends_ids
-    
   end
 
 private

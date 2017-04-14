@@ -6,13 +6,20 @@ class UsersController < ApplicationController
   end
 
   def index
-  	if params[:type] == "friends"
-	    @users = current_user.friends
+    if params[:type] == "friends"
+    	@q = current_user.friends.ransack(params[:q])
+	    @users = @q.result
+	    @users = @users.page(params[:page]).per(1)
 	  elsif params[:type] == "non_friends"
-	    @users = current_user.non_friends
+	    @q = current_user.non_friends.ransack(params[:q])
+	    @users = @q.result
+	    @users = @users.page(params[:page]).per(1)
 	  else
-	    @users = User.all
+	  	@q = User.all.ransack(params[:q])
+	  	@users = @q.result
+	  	@users = @users.page(params[:page]).per(1)
 	  end
+
   end
  
 
