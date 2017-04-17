@@ -1,0 +1,47 @@
+<div class="modal fade" id="adfhsdgfh" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        
+        <p> 
+        <%= radio_button_tag :roll_type,  "admin" %> Admin
+        </p>
+
+        <p> 
+        <%= radio_button_tag :roll_type,  "user" %>User
+        </p>
+
+       <p>
+       <%= button_to "Next", new_registration_path(resource_name), :method=> "get", :form_class => "my_class" %>
+       </p> 
+      
+      <hr/> 
+        
+
+
+<%= nested_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { class: "form-horizontal"}) do |f| %>
+<p>
+<div>
+    <%= f.label :roll_type %>
+    <%= f.select(:roll_type, options_for_select([["Admin", "admin"],["User", "user"]]), class: "form-control") %>
+  </div>
+  </p>
+
+<%= f.submit %>
+<%end%>
+
+   </div>   
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+        Close
+        </button>
+      </div>
+    </div>    
+  </div>
+</div>
+</div>
