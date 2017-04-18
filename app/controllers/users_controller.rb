@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   	#@user = User.find(params[:id])
   end
 
+  
+
   def index
     if params[:type] == "friends"
     	@q = current_user.friends.ransack(params[:q])

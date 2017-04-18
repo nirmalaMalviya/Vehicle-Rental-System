@@ -1,14 +1,9 @@
 
-<% if params[:user].present? %>
-
-<%= render "signupform" %>
-<% else %>
-<%= render "signup" %>
-
-<% end %>
+<%= render "signup"%>
 <script type="text/javascript">
   $("#pop-book").html("<%= j (render :partial => 'signup') %>");
 $('#adfhsdgfh').modal('show');
 
 </script>
+
 

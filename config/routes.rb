@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :my_admins
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: "registrations" }
   resources :welcomes
   resources :book_vehicles do
   	collection do 
