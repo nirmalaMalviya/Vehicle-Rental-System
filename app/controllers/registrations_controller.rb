@@ -1,23 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 	def new
-    super
-  end
-
-  def create
-    @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-	      format.html{redirect_to vehicles_path, notice: 'User is successfully Registered.'}
- 	      format.json { render :show, status: :created, location: @my_vehicle }
-      else
-        format.html { render :new }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    super
+    build_resource({})
+    resource.roll_type = params["role_type"]
+    yield resource if block_given?
+    respond_with resource
   end
 
   def user_params

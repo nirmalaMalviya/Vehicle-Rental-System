@@ -65,15 +65,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
-  
-
-<%byebug%>
-
-<div class="form-group">
-    <%= f.label :roll_type,class: 'form-control hide'  %><br />
- 
-    <%= f.text_field :roll_type , :value=>role_type,class: 'form-control hide' %>
-
+  <div class="form-group">
+    <%= f.label :roll_type,class: 'form-control'  %><br />
+    <%= f.text_field :roll_type,class: 'form-control' %>
   </div>
 
 
