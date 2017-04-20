@@ -1,33 +1,34 @@
+<% byebug %>
 <p>
   <strong>First Name</strong>
-  <%= current_user[:first_name]%>
+  <%= @user.first_name%>
 </p>
 
 <p>
   <strong>Last Name</strong>
-  <%= current_user[:last_name]%>
+  <%= @user.last_name%>
 </p>
 
 <p>
   <strong>Date of Birth</strong>
-  <%= current_user[:dob]%>
+  <%= @user.dob%>
 </p>
 
 <p>
   <strong>Address</strong>
-  <%= current_user[:address]%>
+  <%= @user.address%>
 </p>
 
 <p>
   <strong>Email ID</strong>
-  <%= current_user[:email]%>
+  <%= @user.email%>
 </p>
 
 <p>
   <strong>Image</strong>
-  <%= form_for(current_user, url: add_showing_image_user_path(current_user)) do |f| %>
+  <%= form_for(@user, url: add_showing_image_user_path(@user)) do |f| %>
   <li>
-		<% current_user.images.each do |image| %>
+		<% @user.images.each do |image| %>
 			<div>
 				<%= f.radio_button :show_image, image.id %>
 				<%= image_tag(image.name, size: "16x10")%>

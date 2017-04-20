@@ -32,7 +32,7 @@
       <% end %>
       <td>
       <% if params[:type] == "friends" %>
-        <%= button_to "Show Friend", user, :method => "get" %>
+        <%= button_to "Show Profile", user, :method => "get", class: "btn btn-success" %>
       <% elsif params[:type] == "non_friends" %>
       
         <%= button_to "Add Friend", show_friend_request_user_path(user.id) , :method => "get" %>

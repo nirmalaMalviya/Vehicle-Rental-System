@@ -3,15 +3,13 @@ class FriendRequestsController < ApplicationController
 	before_action :set_request,  except: [:index]
 
 	def index
-		byebug
-		
 		@requests = FriendRequest.where(friend_id: current_user[:id], status: nil)
 	end
 
 	def confirm_friend
 	  respond_to do |format|
 	    if @request.update(status: "confirm")
-	      format.html { redirect_to friend_requests_path, notice: 'My admin was successfully created.' }
+	      format.html { redirect_to friend_requests_path, notice: 'okokokokokokok.' }
       end
     end
   end
