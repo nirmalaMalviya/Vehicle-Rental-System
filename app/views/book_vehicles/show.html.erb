@@ -9,3 +9,80 @@
     </div>
   <%#end%>
 <%end%>
+
+
+<h1>Drag and Drop</h1>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+<span id="drag1" draggable="true" ondragstart="drag(event)">Hello</span><br/>
+<span id="drag1" draggable="true" ondragstart="drag(event)">Drag</span><br/>
+<span id="drag1" draggable="true" ondragstart="drag(event)">Drop</span>
+</div>
+<br/>
+<br/>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+<br/>
+
+<div id="div1"  ondrop="dr(event)">
+	<P id="o1" draggable="true" ondragstart="dr(event)">LLLLLLLLLL</P>
+</div>
+
+<br/>
+<br/>
+<div id="div1" ondrop="dr(event)" ondragover="allowDrop(event)">
+	
+	
+	
+</div>
+
+
+<style>
+#div1 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+
+
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+
+<script type="text/javascript">
+
+function d(eo) {
+   var m= $(this).attr("id").text();
+   var u=eo.target.id;
+
+}
+
+function dr(eo)
+{
+	$(this).attr("id").html(document.getElementById('m'));
+}
+
+$('#ap').click(function(){
+	$('#b').html(document.getElementById('a'));
+});
+
+</script>
+
+
