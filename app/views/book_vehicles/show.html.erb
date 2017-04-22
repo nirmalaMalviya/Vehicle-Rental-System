@@ -13,7 +13,7 @@
 
 <h1>Drag and Drop</h1>
 
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+<!-- <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 <span id="drag1" draggable="true" ondragstart="drag(event)">Hello</span><br/>
 <span id="drag1" draggable="true" ondragstart="drag(event)">Drag</span><br/>
 <span id="drag1" draggable="true" ondragstart="drag(event)">Drop</span>
@@ -22,16 +22,19 @@
 <br/>
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-</div>
+</div> -->
 <br/>
 
-<div id="div1"  ondrop="dr(event)">
-	<P id="o1" draggable="true" ondragstart="dr(event)">LLLLLLLLLL</P>
+<div id="div1" ondrag="d(event)" ondrop="dr(event)" ondragover="allowDrop(event)">
+	<P id="drag1" draggable="true" ondragstart="dd(event)">LLLLLLLLLL</P>
+	<P id="drag1" draggable="true" ondragstart="dd(event)">LLLfghjdfgjdfghjLLLLLLL</P>
+
+
 </div>
 
 <br/>
 <br/>
-<div id="div1" ondrop="dr(event)" ondragover="allowDrop(event)">
+<div id="div1" ondrag="d(event)" ondrop="dr(event)" ondragover="allowDrop(event)">
 	
 	
 	
@@ -50,38 +53,19 @@
 }
 </style>
 <script>
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
-
-</script>
-
-<script type="text/javascript">
+var storageVar;
 
 function d(eo) {
-   var m= $(this).attr("id").text();
-   var u=eo.target.id;
-
+  storageVar = eo.target
 }
 
-function dr(eo)
-{
-	$(this).attr("id").html(document.getElementById('m'));
+function dr(eo) {
+	eo.target.append(storageVar);
 }
 
-$('#ap').click(function(){
-	$('#b').html(document.getElementById('a'));
-});
+function allowDrop(eo) {
+  eo.preventDefault();
+}
 
 </script>
 
