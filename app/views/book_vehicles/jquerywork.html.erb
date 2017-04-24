@@ -1,0 +1,115 @@
+<div>
+<table border="10px">
+<tr>
+	<td colspan="4"><input id="calculate" type="text" name="" style="width: 100px;"></td>
+</tr>
+
+<tr>
+	<td><input type=button value="7" class="my_button"></td>
+	<td><input type=button value="8" class="my_button"></td>
+	<td><input type=button value="9" class="my_button"></td>
+	<td><input type=button value="*" class="my_button"></td>
+</tr>
+
+<tr>
+	<td><input type=button value="4" class="my_button"></td>
+	<td><input type=button value="5" class="my_button"></td>
+	<td><input type=button value="6" class="my_button"></td>
+	<td><input type=button value="-" class="my_button"></td>
+</tr>
+
+<tr>
+	<td><input type=button value="1" class="my_button"></td>
+	<td><input type=button value="2" class="my_button"></td>
+	<td><input type=button value="3" class="my_button"></td>
+	<td><input type=button value="+" class="my_button"></td>
+</tr>
+
+<tr>
+	<td><input type=button value="0" class="my_button"></td>
+	<td><input type=button value="." class="my_button"></td>
+	<td><input type=button value="=" id="calculate_value"></td>
+	<td><input type=button value="%" class="my_button" ></td>
+</tr>
+
+<tr>
+	<td><input type=button value="-" class="my_button"></td>
+	<td><input type=button value="/" class="my_button"></td>
+	<td><input type=button value="*" class="my_button"></td>
+	<td><input type=button value="c" id="clear" style="color: Red;"></td>
+</tr>
+
+</table>
+</div>
+
+<script>
+$('.my_button').click(function(){
+	value_add = $("#calculate").val() + this.value
+  $("#calculate").val(value_add);
+});
+$('#calculate_value').click(function(){
+	value_add = eval($("#calculate").val());
+  $("#calculate").val(value_add);
+});
+$('#clear').click(function(){
+	$("#calculate").val('');
+});
+
+  // $('.my_button').click(function(){	   
+	 // 	if(x == null)
+	 // 	{
+  //     x = parseInt($(this).val());
+  //     value = x;
+  //     $('#button').val(value);
+	 // 	}
+	 // 	else if(y == null &&)
+	 // 	{	 	 
+  //     y = $(this).val();
+  //     value = y;
+  //     $('#button').val(value);
+  //   }
+  //   else if(z == null)
+  //   {   	
+  //  	  z = parseInt($(this).val());
+  //     value = z;
+  //     $('#button').val(value);
+  //   }
+
+   
+  //  if($(this).val()=="=" && (x!= null && y!= null && z!= null))
+  //  {
+  //     if(y == "+")
+  //     {
+  //       var cal=x+z;
+  //       $('#button').val(cal);
+  //     }
+  //     else if(y == "-")
+  //     {
+  //       var cal=x-z;
+  //       $('#button').val(cal); 
+  //     }
+  //     else if(y == "*")
+  //     {
+  //       var cal=x*z;
+  //       $('#button').val(cal); 
+  //     }
+  //     else if(y == "/")
+  //     { 
+  //       var cal=x/z;
+  //       $('#button').val(cal); 
+  //     }
+  //     else if(y == "%")
+  //     { 
+  //       var cal=x%z;
+  //       $('#button').val(cal); 
+  //     }
+  	
+  //   }
+
+  //   if($(this).val()=="c")
+  //   {
+  //     $('#button').val("");
+  //   }
+
+  // });
+</script>

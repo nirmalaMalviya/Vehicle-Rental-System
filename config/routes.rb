@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   	collection do 
   		get 'payment'
   		post 'stripe_payment'
+      get 'jquerywork'
   	end
   end
 

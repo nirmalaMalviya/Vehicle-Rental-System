@@ -5,6 +5,9 @@ class BookVehiclesController < ApplicationController
   before_action :set_plan
   before_action :authenticate_user!
 
+  def jquerywork
+  end
+
   def payment
   end
   
