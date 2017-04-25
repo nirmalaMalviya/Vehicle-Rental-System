@@ -28,7 +28,7 @@
 <tr>
 	<td><input type=button value="0" class="my_button"></td>
 	<td><input type=button value="." class="my_button"></td>
-	<td><input type=button value="=" id="calculate_value"></td>
+	<td><input type=button value="=" class="my_button"></td>
 	<td><input type=button value="%" class="my_button" ></td>
 </tr>
 
@@ -36,24 +36,52 @@
 	<td><input type=button value="-" class="my_button"></td>
 	<td><input type=button value="/" class="my_button"></td>
 	<td><input type=button value="*" class="my_button"></td>
-	<td><input type=button value="c" id="clear" style="color: Red;"></td>
+	<td><input type=button value="c" class="my_button" style="color: Red;"></td>
 </tr>
 
 </table>
 </div>
 
 <script>
-$('.my_button').click(function(){
-	value_add = $("#calculate").val() + this.value
-  $("#calculate").val(value_add);
+var x,y;
+  $('.my_button').click(function(){
+  	if($.isNumeric(this.value))
+	  {
+		  x = $('#calculate').val() + this.value;
+      $('#calculate').val(x);
+      
+    }
+    else if(this.value != "=")
+    {
+      $('#calculate').val("");
+      $('#calculate').val(this.value);
+      y=x + this.value;
+      $('#calculate').val("");
+    }
+     else if(this.value == "c")
+    {
+      x=null;y=null;
+      $('#calculate').val("");
+    }
+    else
+    {
+    	 y=y+x;
+	    $('#calculate').val("");
+      y=eval(y);
+      $('#calculate').val(y);
+    }
 });
-$('#calculate_value').click(function(){
-	value_add = eval($("#calculate").val());
-  $("#calculate").val(value_add);
-});
-$('#clear').click(function(){
-	$("#calculate").val('');
-});
+// $('.my_button').click(function(){
+// 	value_add = $("#calculate").val() + this.value
+//   $("#calculate").val(value_add);
+// });
+// $('#calculate_value').click(function(){
+// 	value_add = eval($("#calculate").val());
+//   $("#calculate").val(value_add);
+// });
+// $('#clear').click(function(){
+// 	$("#calculate").val('');
+// });
 
   // $('.my_button').click(function(){	   
 	 // 	if(x == null)
