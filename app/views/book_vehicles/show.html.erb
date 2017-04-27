@@ -1,16 +1,17 @@
 <% @book_vehicle.each do |booked_vehicle| %>
-  <%# if Date.today < Date.parse(booked_vehicle.date_of_release.to_formatted_s(:date)) %>
-    <div id="delete_popup">
-      Vehicle ID: <%= booked_vehicle.vehicle_id %>
-      Vehicle Cost: <%= booked_vehicle.v_cost %> 
-      <%= button_to "Unbook", book_vehicle_path(booked_vehicle.id), :method=> "delete", remote: true %>
-      <hr/>
-      <br/>
-    </div>
-  <%#end%>
+<%# if Date.today < Date.parse(booked_vehicle.date_of_release.to_formatted_s(:date)) %>
+	<div id="delete_popup">
+		Vehicle ID: <%= booked_vehicle.vehicle_id %>
+		Vehicle Cost: <%= booked_vehicle.v_cost %> 
+		<%= button_to "Unbook", book_vehicle_path(booked_vehicle.id), :method=> "delete", remote: true %>
+		<hr/>
+		<br/>
+	</div>
+<%#end%>
 <%end%>
+
 <h1>
-  <%= link_to 'JQUERY', jquerywork_book_vehicles_path  %>
+	<%= link_to 'JQUERY', jquerywork_book_vehicles_path  %>
 </h1>
 
 <h1>Drag and Drop</h1>
@@ -30,45 +31,42 @@
 <div id="div1" ondrag="d(event)" ondrop="dr(event)" ondragover="allowDrop(event)">
 	<P id="drag1" draggable="true" ondragstart="dd(event)">LLLLLLLLLL</P>
 	<P id="drag1" draggable="true" ondragstart="dd(event)">LLLfghjdfgjdfghjLLLLLLL</P>
-
-
 </div>
 
 <br/>
 <br/>
 <div id="div1" ondrag="d(event)" ondrop="dr(event)" ondragover="allowDrop(event)">
-	
-	
-	
 </div>
 
 
 <style>
-#div1 {
-    width: 350px;
-    height: 70px;
-    padding: 10px;
-    border: 1px solid #aaaaaa;
-}
+	#div1 {
+	width: 350px;
+	height: 70px;
+	padding: 10px;
+	border: 1px solid #aaaaaa;
+	}
 
 
-}
+	
 </style>
 <script>
-var storageVar;
+	var storageVar;
 
-function d(eo) {
-  storageVar = eo.target
-}
+	function d(eo)
+	{
+		storageVar = eo.target;
+	}
 
-function dr(eo) {
-	eo.target.append(storageVar);
-}
+	function dr(eo) 
+	{
+		eo.target.append(storageVar);
+	}
 
-function allowDrop(eo) {
-  eo.preventDefault();
-}
-
+	function allowDrop(eo)
+	{
+		eo.preventDefault();
+	}
 </script>
 
 

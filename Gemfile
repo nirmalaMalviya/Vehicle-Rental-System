@@ -44,6 +44,7 @@ gem "paranoia", "~> 2.2"
 gem "audited", "~> 4.4"
 gem 'best_in_place', '~> 3.0.1'
 gem 'bootstrap-datepicker-rails'
+gem 'workers'
 group :development, :test do
   gem "rails-erd"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

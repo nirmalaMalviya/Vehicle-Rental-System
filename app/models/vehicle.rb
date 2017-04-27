@@ -5,5 +5,5 @@ class Vehicle < ApplicationRecord
 	has_many :images, as: :imageable
 	accepts_nested_attributes_for :images, reject_if: lambda {|attributes| attributes['name'].blank?}
   belongs_to :user
-  has_many :book_vehicles
+	has_many :book_vehicles
 end
